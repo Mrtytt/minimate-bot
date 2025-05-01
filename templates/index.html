@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Satranç Analiz Aracı</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>PGN Dosyası Yükle</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="pgnfile" required>
+        <button type="submit">Analiz Et</button>
+    </form>
+
+    {% if results %}
+    <div class="container">
+        <!-- SOL SÜTUN: Analiz Tablosu -->
+        <div class="main-table">
+            <h2>Analiz Sonuçları ({{ filename }})</h2>
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>#</th>
+                    <th>Oynanan Hamle</th>
+                    <th>En İyi Hamle</th>
+                    <th>Değerlendirme</th>
+                    <th>Tür</th>
+                </tr>
+                {% for item in results %}
+                <tr>
+                    <td>{{ item.move_number }}</td>
+                    <td>{{ item.played }}</td>
+                    <td>{{ item.best }}</td>
+                    <td>{{ item.eval }}</td>
+                    <td>
+                        {% if item.type %}
+                            <span class="badge {{ item.type | replace(' ', '') }}">{{ item.type }}</span>
+                        {% else %}
+                            <span class="badge Unknown">Unknown</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- SAĞ SÜTUN: Oyuncu ve Hamle Türü İstatistikleri -->
+        <div class="sidebar">
+            <h3>Oyuncular</h3>
+            <p><strong>Beyaz:</strong> {{ white_player }}</p>
+            <p><strong>Siyah:</strong> {{ black_player }}</p>
+
+            <h4>Hamle Türü Dağılımı</h4>
+            {% for player, stats in move_stats.items() %}
+                <h5>{{ player }}</h5>
+                <ul>
+                {% for mtype, count in stats.items() %}
+                    <li>
+                        <span class="badge {{ mtype | replace(' ', '') }}">{{ mtype }}</span>
+                        : {{ count }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
