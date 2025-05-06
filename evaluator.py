@@ -4,6 +4,7 @@ import chess.polyglot
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 import copy
+from game_tracker import is_already_analyzed, mark_as_analyzed
 
 # Ana motor örneği sadece path için kullanılacak
 STOCKFISH_PATH = "C:/ChessEngines/stockfish/stockfish.exe"
@@ -39,19 +40,30 @@ def classify_move(eval_diff, played_eval, best_eval, is_mate=False, book_move=Fa
     diff = abs(eval_diff)
 
     # Brilliant: Taş fedası ve çok iyi hamle olmalı
-    if board and move:
-        if is_sacrifice(board, move) and eval_diff >= 0 and diff < 50:
-            return "Brilliant"
+    def is_endgame(board):
+        """Basit materyal sayımına göre oyun sonu kontrolü."""
+        total_material = sum(piece.piece_type != chess.KING for piece in board.piece_map().values())
+        return total_material <= 6  # örnek eşik: sadece birkaç taş kaldıysa
 
-    if diff == 0:
-        return "Great"
-    elif diff < 10:
+    def is_minor_piece(move, board):
+        piece = board.piece_at(move.from_square)
+        return piece and piece.piece_type in [chess.KING, chess.PAWN]
+
+    if board and move:
+        if is_sacrifice(board, move) and eval_diff >= 0 and diff == 0:
+            if not is_endgame(board) and not is_minor_piece(move, board):
+                return "Brilliant"
+        elif is_sacrifice(board, move) and eval_diff >= 0 and diff <= 10:
+            if not is_endgame(board) or not is_minor_piece(move, board):
+                return "Great"
+
+    if diff < 20:
         return "Best"
-    elif diff < 20:
+    elif diff < 35:
         return "Excellent"
-    elif diff < 50:
+    elif diff < 75:
         return "Good"
-    elif diff < 100:
+    elif diff < 150:
         return "Inaccuracy"
     elif diff < 300:
         return "Mistake"
@@ -72,11 +84,12 @@ def analyze_move(index, board_fen, move_uci):
         if best_move_obj in board.legal_moves:
             best_move_san = board.san(best_move_obj)
         else:
-            best_move_san = best_move_uci  # Yine de fallback kalsın
+            best_move_san = best_move_uci
     except:
         best_move_san = best_move_uci
     best_cp = best_eval.get("value") if best_eval["type"] == "cp" else None
 
+    played_move_san = board.san(move)
     board.push(move)
 
     stockfish.set_fen_position(board.fen())
@@ -93,6 +106,7 @@ def analyze_move(index, board_fen, move_uci):
     return {
         "index": index,
         "played": move_uci,
+        "played_san": played_move_san,
         "best": best_move_san,
         "eval": played_eval,
         "type": move_type,
@@ -101,61 +115,70 @@ def analyze_move(index, board_fen, move_uci):
     }
 
 def evaluate_game_parallel(pgn_path, white_player, black_player):
-    with open(pgn_path) as pgn:
-        game = chess.pgn.read_game(pgn)
-        board = game.board()
+    with open(pgn_path) as pgn_file:
+        pgn_text = pgn_file.read()
 
-        tasks = []
-        boards = []
-        move_list = list(game.mainline_moves())
+    # Önceden analiz kontrolü
+    existing_analysis = is_already_analyzed(pgn_text)
+    if existing_analysis:
+        print("Bu oyun daha önce analiz edilmiş.")
+        return (
+            existing_analysis.get("results"),
+            existing_analysis.get("move_stats"),
+            existing_analysis.get("accuracy_scores")
+        )
 
-        # Hamleler ve board pozisyonları hazırlanıyor
-        for idx, move in enumerate(move_list):
-            fen = board.fen()
-            tasks.append((idx + 1, fen, move.uci()))
-            board.push(move)
+    # Yeni analiz işlemi
+    game = chess.pgn.read_game(open(pgn_path))
+    board = game.board()
+    tasks = []
+    move_list = list(game.mainline_moves())
 
-        # Paralel analiz başlatılıyor
-        with ThreadPoolExecutor() as executor:
-            results = list(executor.map(lambda args: analyze_move(*args), tasks))
+    for idx, move in enumerate(move_list):
+        fen = board.fen()
+        tasks.append((idx + 1, fen, move.uci()))
+        board.push(move)
 
-        # Sonuçları sıralıyoruz (çünkü paralel işlem sırasını karıştırabilir)
-        results.sort(key=lambda x: x["index"])
+    with ThreadPoolExecutor() as executor:
+        results = list(executor.map(lambda args: analyze_move(*args), tasks))
 
-        # İstatistikleri çıkar
-        move_stats = {
-            white_player: defaultdict(int),
-            black_player: defaultdict(int)
-        }
+    results.sort(key=lambda x: x["index"])
 
-        board = game.board()
-        for result in results:
-            move = chess.Move.from_uci(result["played"])
-            board.push(move)
+    move_stats = {
+        white_player: defaultdict(int),
+        black_player: defaultdict(int)
+    }
 
-            player = white_player if board.turn == chess.BLACK else black_player
-            move_stats[player][result["type"]] += 1
+    board = game.board()
+    for result in results:
+        move = chess.Move.from_uci(result["played"])
+        if move not in board.legal_moves:
+            raise ValueError(f"Geçersiz hamle: {move}")
+        board.push(move)
 
-        # Ağırlıklı skor hesaplama
-        weights = {
-            "Brilliant": 1.1,   # Mükemmel hamleler, yüksek ama çok abartılmadan
-            "Great": 1.05,       # Çok iyi hamleler
-            "Best": 0.95,        # En iyi hamleler, temel kabul
-            "Excellent": 0.85,   # İyi hamleler ama çok etkili değil
-            "Good": 0.5,        # "Good" hamlelerin etkisini biraz azaltıyoruz
-            "Inaccuracy": 0.2,  # Inaccuracy, negatif etkisi yüksek
-            "Mistake": 0.1,     # Mistake, doğruluğu daha çok etkiliyor
-            "Blunder": 0.0,     # Blunder, doğruluğu çok ciddi şekilde etkiliyor
-            "Forced Mate": 1.0, # Zorunlu matlar, yüksek ağırlık
-            "Missed Win": 0.1,  # Kaçırılmış zaferler, çok düşük etkisi var
-            "Book": 1.0         # Kitap hamleleri, etkisi orta seviyede
-        }
+        player = white_player if board.turn == chess.BLACK else black_player
+        move_stats[player][result["type"]] += 1
 
-        accuracy_scores = {}
-        for player, stats in move_stats.items():
-            total_moves = sum(stats.values())
-            weighted_sum = sum(count * weights.get(move_type, 0.5) for move_type, count in stats.items())
-            accuracy = (weighted_sum / total_moves) * 100 if total_moves > 0 else 0
-            accuracy_scores[player] = round(min(accuracy, 100), 2)
+    weights = {
+        "Brilliant": 1.1, "Great": 1.05, "Best": 1.0, "Excellent": 0.95,
+        "Good": 0.5, "Inaccuracy": 0.35, "Mistake": 0.15, "Blunder": 0.0,
+        "Forced Mate": 1.0, "Missed Win": 0.1, "Book": 1.0
+    }
 
-        return results, move_stats, accuracy_scores
+    accuracy_scores = {}
+    for player, stats in move_stats.items():
+        total_moves = sum(stats.values())
+        weighted_sum = sum(count * weights.get(t, 0.5) for t, count in stats.items())
+        accuracy = (weighted_sum / total_moves) * 100 if total_moves > 0 else 0
+        accuracy_scores[player] = round(min(accuracy, 100), 2)
+
+    # Ön belleğe analiz sonucunu kaydet
+    mark_as_analyzed(pgn_text, {
+        "white": white_player,
+        "black": black_player,
+        "results": results,
+        "move_stats": {p: dict(move_stats[p]) for p in move_stats},
+        "accuracy_scores": accuracy_scores
+    })
+
+    return results, move_stats, accuracy_scores
