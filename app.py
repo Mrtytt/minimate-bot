@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from evaluator import evaluate_game
+from evaluator import evaluate_game_parallel
 import os
 from werkzeug.utils import secure_filename
 import chess.pgn
@@ -26,11 +26,12 @@ def index():
                 black_player = game.headers.get("Black", "Siyah")
 
             # Değerlendirme + hamle istatistiklerini al
-            results, move_stats = evaluate_game(filepath, white_player, black_player)
+            results, move_stats, accuracy_scores = evaluate_game_parallel(filepath, white_player, black_player)
 
             return render_template("index.html",
                                    results=results,
                                    filename=filename,
+                                   accuracy_scores=accuracy_scores,
                                    white_player=white_player,
                                    black_player=black_player,
                                    move_stats=move_stats)

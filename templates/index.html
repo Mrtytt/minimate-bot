@@ -5,11 +5,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>PGN Dosyası Yükle</h1>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="pgnfile" required>
-        <button type="submit">Analiz Et</button>
-    </form>
+    <div class="header">
+        <h1>PGN Dosyası Yükle</h1>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="pgnfile" required>
+            <button type="submit">Analiz Et</button>
+        </form>
+    </div>
 
     {% if results %}
     <div class="container">
@@ -47,7 +49,16 @@
             <h3>Oyuncular</h3>
             <p><strong>Beyaz:</strong> {{ white_player }}</p>
             <p><strong>Siyah:</strong> {{ black_player }}</p>
-
+        
+            <h4>Doğruluk Oranı</h4>
+            <ul>
+                {% for player, score in accuracy_scores.items() %}
+                <li>
+                    <strong>{{ player }}:</strong> {{ score }}%
+                </li>
+                {% endfor %}
+            </ul>
+        
             <h4>Hamle Türü Dağılımı</h4>
             {% for player, stats in move_stats.items() %}
                 <h5>{{ player }}</h5>
