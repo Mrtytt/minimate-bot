@@ -113,7 +113,7 @@ tr:hover {
 .Mistake    { background-color: #E08A23; }
 .Blunder    { background-color: #D33833; }
 .Missed     { background-color: #DDAF1E; }
-.Unknown    { background-color: #280963; }
+.Forced_Mate{ background-color: #333;}
 
 /* Sidebar için liste stilleri */
 .sidebar h3 {
@@ -133,8 +133,8 @@ tr:hover {
     padding-left: 0;
 }
 
-.stats li {
-    margin-bottom: 8px;
+.li {
+    margin-bottom: 18px;
     font-size: 14px;
 }
 

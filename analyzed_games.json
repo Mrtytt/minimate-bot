@@ -1735,5 +1735,711 @@
       "Samiabera1": 77.98,
       "YttMurat": 79.78
     }
+  },
+  "655757e440f8646d18b69a0b8285f365": {
+    "white": "williamser_33",
+    "black": "YttMurat",
+    "results": [
+      {
+        "index": 1,
+        "played": "e2e4",
+        "played_san": "e4",
+        "best": "e4",
+        "eval": {
+          "type": "cp",
+          "value": 36
+        },
+        "type": "Book",
+        "book": true,
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+      },
+      {
+        "index": 2,
+        "played": "e7e5",
+        "played_san": "e5",
+        "best": "e5",
+        "eval": {
+          "type": "cp",
+          "value": 36
+        },
+        "type": "Book",
+        "book": true,
+        "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1"
+      },
+      {
+        "index": 3,
+        "played": "g1f3",
+        "played_san": "Nf3",
+        "best": "Nf3",
+        "eval": {
+          "type": "cp",
+          "value": 39
+        },
+        "type": "Book",
+        "book": true,
+        "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2"
+      },
+      {
+        "index": 4,
+        "played": "b8c6",
+        "played_san": "Nc6",
+        "best": "Nc6",
+        "eval": {
+          "type": "cp",
+          "value": 46
+        },
+        "type": "Book",
+        "book": true,
+        "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2"
+      },
+      {
+        "index": 5,
+        "played": "f1c4",
+        "played_san": "Bc4",
+        "best": "Bb5",
+        "eval": {
+          "type": "cp",
+          "value": 15
+        },
+        "type": "Book",
+        "book": true,
+        "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3"
+      },
+      {
+        "index": 6,
+        "played": "g8f6",
+        "played_san": "Nf6",
+        "best": "Nf6",
+        "eval": {
+          "type": "cp",
+          "value": 35
+        },
+        "type": "Book",
+        "book": true,
+        "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3"
+      },
+      {
+        "index": 7,
+        "played": "d2d3",
+        "played_san": "d3",
+        "best": "d3",
+        "eval": {
+          "type": "cp",
+          "value": 15
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4"
+      },
+      {
+        "index": 8,
+        "played": "d7d6",
+        "played_san": "d6",
+        "best": "Bc5",
+        "eval": {
+          "type": "cp",
+          "value": 86
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R b KQkq - 0 4"
+      },
+      {
+        "index": 9,
+        "played": "f3g5",
+        "played_san": "Ng5",
+        "best": "Ng5",
+        "eval": {
+          "type": "cp",
+          "value": 75
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r1bqkb1r/ppp2ppp/2np1n2/4p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 0 5"
+      },
+      {
+        "index": 10,
+        "played": "c8e6",
+        "played_san": "Be6",
+        "best": "d5",
+        "eval": {
+          "type": "cp",
+          "value": 230
+        },
+        "type": "Mistake",
+        "book": false,
+        "fen": "r1bqkb1r/ppp2ppp/2np1n2/4p1N1/2B1P3/3P4/PPP2PPP/RNBQK2R b KQkq - 1 5"
+      },
+      {
+        "index": 11,
+        "played": "g5e6",
+        "played_san": "Nxe6",
+        "best": "Nxe6",
+        "eval": {
+          "type": "cp",
+          "value": 231
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2qkb1r/ppp2ppp/2npbn2/4p1N1/2B1P3/3P4/PPP2PPP/RNBQK2R w KQkq - 2 6"
+      },
+      {
+        "index": 12,
+        "played": "f7e6",
+        "played_san": "fxe6",
+        "best": "fxe6",
+        "eval": {
+          "type": "cp",
+          "value": 234
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2qkb1r/ppp2ppp/2npNn2/4p3/2B1P3/3P4/PPP2PPP/RNBQK2R b KQkq - 0 6"
+      },
+      {
+        "index": 13,
+        "played": "c4e6",
+        "played_san": "Bxe6",
+        "best": "Bxe6",
+        "eval": {
+          "type": "cp",
+          "value": 244
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2qkb1r/ppp3pp/2nppn2/4p3/2B1P3/3P4/PPP2PPP/RNBQK2R w KQkq - 0 7"
+      },
+      {
+        "index": 14,
+        "played": "f8e7",
+        "played_san": "Be7",
+        "best": "d5",
+        "eval": {
+          "type": "cp",
+          "value": 290
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "r2qkb1r/ppp3pp/2npBn2/4p3/4P3/3P4/PPP2PPP/RNBQK2R b KQkq - 0 7"
+      },
+      {
+        "index": 15,
+        "played": "b1c3",
+        "played_san": "Nc3",
+        "best": "c3",
+        "eval": {
+          "type": "cp",
+          "value": 226
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "r2qk2r/ppp1b1pp/2npBn2/4p3/4P3/3P4/PPP2PPP/RNBQK2R w KQkq - 1 8"
+      },
+      {
+        "index": 16,
+        "played": "c6d4",
+        "played_san": "Nd4",
+        "best": "Nd4",
+        "eval": {
+          "type": "cp",
+          "value": 232
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2qk2r/ppp1b1pp/2npBn2/4p3/4P3/2NP4/PPP2PPP/R1BQK2R b KQkq - 2 8"
+      },
+      {
+        "index": 17,
+        "played": "e6d5",
+        "played_san": "Bd5",
+        "best": "Bh3",
+        "eval": {
+          "type": "cp",
+          "value": 142
+        },
+        "type": "Inaccuracy",
+        "book": false,
+        "fen": "r2qk2r/ppp1b1pp/3pBn2/4p3/3nP3/2NP4/PPP2PPP/R1BQK2R w KQkq - 3 9"
+      },
+      {
+        "index": 18,
+        "played": "f6d5",
+        "played_san": "Nxd5",
+        "best": "c6",
+        "eval": {
+          "type": "cp",
+          "value": 167
+        },
+        "type": "Excellent",
+        "book": false,
+        "fen": "r2qk2r/ppp1b1pp/3p1n2/3Bp3/3nP3/2NP4/PPP2PPP/R1BQK2R b KQkq - 4 9"
+      },
+      {
+        "index": 19,
+        "played": "c3d5",
+        "played_san": "Nxd5",
+        "best": "Nxd5",
+        "eval": {
+          "type": "cp",
+          "value": 160
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2qk2r/ppp1b1pp/3p4/3np3/3nP3/2NP4/PPP2PPP/R1BQK2R w KQkq - 0 10"
+      },
+      {
+        "index": 20,
+        "played": "e8g8",
+        "played_san": "O-O",
+        "best": "O-O",
+        "eval": {
+          "type": "cp",
+          "value": 154
+        },
+        "type": "Excellent",
+        "book": false,
+        "fen": "r2qk2r/ppp1b1pp/3p4/3Np3/3nP3/3P4/PPP2PPP/R1BQK2R b KQkq - 0 10"
+      },
+      {
+        "index": 21,
+        "played": "e1g1",
+        "played_san": "O-O",
+        "best": "Nxe7+",
+        "eval": {
+          "type": "cp",
+          "value": 147
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2q1rk1/ppp1b1pp/3p4/3Np3/3nP3/3P4/PPP2PPP/R1BQK2R w KQ - 1 11"
+      },
+      {
+        "index": 22,
+        "played": "c7c6",
+        "played_san": "c6",
+        "best": "Bg5",
+        "eval": {
+          "type": "cp",
+          "value": 157
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2q1rk1/ppp1b1pp/3p4/3Np3/3nP3/3P4/PPP2PPP/R1BQ1RK1 b - - 2 11"
+      },
+      {
+        "index": 23,
+        "played": "d5b4",
+        "played_san": "Nb4",
+        "best": "Nxe7+",
+        "eval": {
+          "type": "cp",
+          "value": -7
+        },
+        "type": "Mistake",
+        "book": false,
+        "fen": "r2q1rk1/pp2b1pp/2pp4/3Np3/3nP3/3P4/PPP2PPP/R1BQ1RK1 w - - 0 12"
+      },
+      {
+        "index": 24,
+        "played": "c6c5",
+        "played_san": "c5",
+        "best": "a5",
+        "eval": {
+          "type": "cp",
+          "value": 196
+        },
+        "type": "Mistake",
+        "book": false,
+        "fen": "r2q1rk1/pp2b1pp/2pp4/4p3/1N1nP3/3P4/PPP2PPP/R1BQ1RK1 b - - 1 12"
+      },
+      {
+        "index": 25,
+        "played": "b4d5",
+        "played_san": "Nd5",
+        "best": "Nd5",
+        "eval": {
+          "type": "cp",
+          "value": 212
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2q1rk1/pp2b1pp/3p4/2p1p3/1N1nP3/3P4/PPP2PPP/R1BQ1RK1 w - - 0 13"
+      },
+      {
+        "index": 26,
+        "played": "e7f6",
+        "played_san": "Bf6",
+        "best": "Bg5",
+        "eval": {
+          "type": "cp",
+          "value": 251
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "r2q1rk1/pp2b1pp/3p4/2pNp3/3nP3/3P4/PPP2PPP/R1BQ1RK1 b - - 1 13"
+      },
+      {
+        "index": 27,
+        "played": "d5f6",
+        "played_san": "Nxf6+",
+        "best": "c3",
+        "eval": {
+          "type": "cp",
+          "value": 152
+        },
+        "type": "Inaccuracy",
+        "book": false,
+        "fen": "r2q1rk1/pp4pp/3p1b2/2pNp3/3nP3/3P4/PPP2PPP/R1BQ1RK1 w - - 2 14"
+      },
+      {
+        "index": 28,
+        "played": "d8f6",
+        "played_san": "Qxf6",
+        "best": "Qxf6",
+        "eval": {
+          "type": "cp",
+          "value": 144
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r2q1rk1/pp4pp/3p1N2/2p1p3/3nP3/3P4/PPP2PPP/R1BQ1RK1 b - - 0 14"
+      },
+      {
+        "index": 29,
+        "played": "c2c3",
+        "played_san": "c3",
+        "best": "a4",
+        "eval": {
+          "type": "cp",
+          "value": 145
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r4rk1/pp4pp/3p1q2/2p1p3/3nP3/3P4/PPP2PPP/R1BQ1RK1 w - - 0 15"
+      },
+      {
+        "index": 30,
+        "played": "d4c6",
+        "played_san": "Nc6",
+        "best": "Ne6",
+        "eval": {
+          "type": "cp",
+          "value": 172
+        },
+        "type": "Excellent",
+        "book": false,
+        "fen": "r4rk1/pp4pp/3p1q2/2p1p3/3nP3/2PP4/PP3PPP/R1BQ1RK1 b - - 0 15"
+      },
+      {
+        "index": 31,
+        "played": "d1g4",
+        "played_san": "Qg4",
+        "best": "f4",
+        "eval": {
+          "type": "cp",
+          "value": 173
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "r4rk1/pp4pp/2np1q2/2p1p3/4P3/2PP4/PP3PPP/R1BQ1RK1 w - - 1 16"
+      },
+      {
+        "index": 32,
+        "played": "a8d8",
+        "played_san": "Rad8",
+        "best": "Rf7",
+        "eval": {
+          "type": "cp",
+          "value": 188
+        },
+        "type": "Excellent",
+        "book": false,
+        "fen": "r4rk1/pp4pp/2np1q2/2p1p3/4P1Q1/2PP4/PP3PPP/R1B2RK1 b - - 2 16"
+      },
+      {
+        "index": 33,
+        "played": "a2a4",
+        "played_san": "a4",
+        "best": "h3",
+        "eval": {
+          "type": "cp",
+          "value": 131
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2np1q2/2p1p3/4P1Q1/2PP4/PP3PPP/R1B2RK1 w - - 3 17"
+      },
+      {
+        "index": 34,
+        "played": "f6g6",
+        "played_san": "Qg6",
+        "best": "d5",
+        "eval": {
+          "type": "cp",
+          "value": 191
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2np1q2/2p1p3/P3P1Q1/2PP4/1P3PPP/R1B2RK1 b - - 0 17"
+      },
+      {
+        "index": 35,
+        "played": "g4h3",
+        "played_san": "Qh3",
+        "best": "Qxg6",
+        "eval": {
+          "type": "cp",
+          "value": 68
+        },
+        "type": "Inaccuracy",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2np2q1/2p1p3/P3P1Q1/2PP4/1P3PPP/R1B2RK1 w - - 1 18"
+      },
+      {
+        "index": 36,
+        "played": "d6d5",
+        "played_san": "d5",
+        "best": "d5",
+        "eval": {
+          "type": "cp",
+          "value": 71
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2np2q1/2p1p3/P3P3/2PP3Q/1P3PPP/R1B2RK1 b - - 2 18"
+      },
+      {
+        "index": 37,
+        "played": "f1e1",
+        "played_san": "Re1",
+        "best": "a5",
+        "eval": {
+          "type": "cp",
+          "value": 31
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2n3q1/2ppp3/P3P3/2PP3Q/1P3PPP/R1B2RK1 w - - 0 19"
+      },
+      {
+        "index": 38,
+        "played": "d5d4",
+        "played_san": "d4",
+        "best": "d4",
+        "eval": {
+          "type": "cp",
+          "value": 13
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2n3q1/2ppp3/P3P3/2PP3Q/1P3PPP/R1B1R1K1 b - - 1 19"
+      },
+      {
+        "index": 39,
+        "played": "c3c4",
+        "played_san": "c4",
+        "best": "c4",
+        "eval": {
+          "type": "cp",
+          "value": 48
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2n3q1/2p1p3/P2pP3/2PP3Q/1P3PPP/R1B1R1K1 w - - 0 20"
+      },
+      {
+        "index": 40,
+        "played": "c6b4",
+        "played_san": "Nb4",
+        "best": "Rd6",
+        "eval": {
+          "type": "cp",
+          "value": 83
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/2n3q1/2p1p3/P1PpP3/3P3Q/1P3PPP/R1B1R1K1 b - - 0 20"
+      },
+      {
+        "index": 41,
+        "played": "c1d2",
+        "played_san": "Bd2",
+        "best": "Rf1",
+        "eval": {
+          "type": "cp",
+          "value": -161
+        },
+        "type": "Mistake",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/6q1/2p1p3/PnPpP3/3P3Q/1P3PPP/R1B1R1K1 w - - 1 21"
+      },
+      {
+        "index": 42,
+        "played": "b4c2",
+        "played_san": "Nc2",
+        "best": "Nc2",
+        "eval": {
+          "type": "cp",
+          "value": -152
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/6q1/2p1p3/PnPpP3/3P3Q/1P1B1PPP/R3R1K1 b - - 2 21"
+      },
+      {
+        "index": 43,
+        "played": "a1c1",
+        "played_san": "Rac1",
+        "best": "Rab1",
+        "eval": {
+          "type": "cp",
+          "value": -207
+        },
+        "type": "Inaccuracy",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/6q1/2p1p3/P1PpP3/3P3Q/1PnB1PPP/R3R1K1 w - - 3 22"
+      },
+      {
+        "index": 44,
+        "played": "c2e1",
+        "played_san": "Nxe1",
+        "best": "Nxe1",
+        "eval": {
+          "type": "cp",
+          "value": -229
+        },
+        "type": "Good",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/6q1/2p1p3/P1PpP3/3P3Q/1PnB1PPP/2R1R1K1 b - - 4 22"
+      },
+      {
+        "index": 45,
+        "played": "c1e1",
+        "played_san": "Rxe1",
+        "best": "Rxe1",
+        "eval": {
+          "type": "cp",
+          "value": -226
+        },
+        "type": "Best",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/6q1/2p1p3/P1PpP3/3P3Q/1P1B1PPP/2R1n1K1 w - - 0 23"
+      },
+      {
+        "index": 46,
+        "played": "g6f6",
+        "played_san": "Qf6",
+        "best": "Qb6",
+        "eval": {
+          "type": "cp",
+          "value": -129
+        },
+        "type": "Inaccuracy",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/6q1/2p1p3/P1PpP3/3P3Q/1P1B1PPP/4R1K1 b - - 0 23"
+      },
+      {
+        "index": 47,
+        "played": "h3g4",
+        "played_san": "Qg4",
+        "best": "Qg3",
+        "eval": {
+          "type": "mate",
+          "value": -3
+        },
+        "type": "Missed",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/5q2/2p1p3/P1PpP3/3P3Q/1P1B1PPP/4R1K1 w - - 1 24"
+      },
+      {
+        "index": 48,
+        "played": "f6f2",
+        "played_san": "Qxf2+",
+        "best": "Qxf2+",
+        "eval": {
+          "type": "mate",
+          "value": -2
+        },
+        "type": "Forced_Mate",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/5q2/2p1p3/P1PpP1Q1/3P4/1P1B1PPP/4R1K1 b - - 2 24"
+      },
+      {
+        "index": 49,
+        "played": "g1h1",
+        "played_san": "Kh1",
+        "best": "Kh1",
+        "eval": {
+          "type": "mate",
+          "value": -2
+        },
+        "type": "Forced_Mate",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/8/2p1p3/P1PpP1Q1/3P4/1P1B1qPP/4R1K1 w - - 0 25"
+      },
+      {
+        "index": 50,
+        "played": "f2f1",
+        "played_san": "Qf1+",
+        "best": "Qf1+",
+        "eval": {
+          "type": "mate",
+          "value": -1
+        },
+        "type": "Forced_Mate",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/8/2p1p3/P1PpP1Q1/3P4/1P1B1qPP/4R2K b - - 1 25"
+      },
+      {
+        "index": 51,
+        "played": "e1f1",
+        "played_san": "Rxf1",
+        "best": "Rxf1",
+        "eval": {
+          "type": "mate",
+          "value": -1
+        },
+        "type": "Forced_Mate",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/8/2p1p3/P1PpP1Q1/3P4/1P1B2PP/4Rq1K w - - 2 26"
+      },
+      {
+        "index": 52,
+        "played": "f8f1",
+        "played_san": "Rxf1#",
+        "best": "Rxf1#",
+        "eval": {
+          "type": "mate",
+          "value": 0
+        },
+        "type": "Forced_Mate",
+        "book": false,
+        "fen": "3r1rk1/pp4pp/8/2p1p3/P1PpP1Q1/3P4/1P1B2PP/5R1K b - - 0 26"
+      }
+    ],
+    "move_stats": {
+      "williamser_33": {
+        "Book": 3,
+        "Best": 11,
+        "Good": 3,
+        "Inaccuracy": 4,
+        "Mistake": 2,
+        "Missed": 1,
+        "Forced_Mate": 2
+      },
+      "YttMurat": {
+        "Book": 3,
+        "Good": 6,
+        "Mistake": 2,
+        "Best": 7,
+        "Excellent": 4,
+        "Inaccuracy": 1,
+        "Forced_Mate": 3
+      }
+    },
+    "accuracy_scores": {
+      "williamser_33": 74.23,
+      "YttMurat": 78.65
+    }
   }
 }

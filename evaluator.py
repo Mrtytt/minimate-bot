@@ -10,6 +10,28 @@ from game_tracker import is_already_analyzed, mark_as_analyzed
 STOCKFISH_PATH = "C:/ChessEngines/stockfish/stockfish.exe"
 BOOK_PATH = "C:/ChessEngines/openings/komodo.bin"
 
+def is_forced_mate_after_move(board: chess.Board, move: chess.Move) -> bool:
+    """
+    Yalnızca oynanan hamle forced mate'e yol açıyorsa True döner.
+    """
+    # Tüm olası hamleleri kontrol et
+    stockfish = Stockfish(path=STOCKFISH_PATH, depth=18)
+    stockfish.set_fen_position(board.fen())
+    all_moves_info = stockfish.get_top_moves(5)  # İlk 5 hamleye bakalım
+
+    # Eğer en iyi hamle bu hamleyse ve forced mate varsa
+    move_uci = move.uci()
+    for info in all_moves_info:
+        mate = info.get("Mate")
+        if mate is not None and abs(mate) > 0:
+            # Forced mate varsa ve sadece bu hamle ile geliyorsa
+            if info["Move"] == move_uci:
+                return True
+            else:
+                # Başka hamleyle de mate oluyorsa bu hamle özel değil
+                return False
+    return False
+
 def is_book_move(board):
     try:
         with chess.polyglot.open_reader(BOOK_PATH) as reader:
@@ -31,9 +53,9 @@ def classify_move(eval_diff, played_eval, best_eval, is_mate=False, book_move=Fa
         return "Book"
     if is_mate:
         if best_eval is not None and best_eval < 0:
-            return "Missed Win"
+            return "Missed"
         else:
-            return "Forced Mate"
+            return "Forced_Mate"
     if eval_diff is None:
         return "Unknown"
 
@@ -50,6 +72,8 @@ def classify_move(eval_diff, played_eval, best_eval, is_mate=False, book_move=Fa
         return piece and piece.piece_type in [chess.KING, chess.PAWN]
 
     if board and move:
+        if is_sacrifice(board, move) and is_forced_mate_after_move(board, move):
+            return "Brilliant"
         if is_sacrifice(board, move) and eval_diff >= 0 and diff == 0:
             if not is_endgame(board) and not is_minor_piece(move, board):
                 return "Brilliant"
@@ -162,7 +186,7 @@ def evaluate_game_parallel(pgn_path, white_player, black_player):
     weights = {
         "Brilliant": 1.1, "Great": 1.05, "Best": 1.0, "Excellent": 0.95,
         "Good": 0.5, "Inaccuracy": 0.35, "Mistake": 0.15, "Blunder": 0.0,
-        "Forced Mate": 1.0, "Missed Win": 0.1, "Book": 1.0
+        "Forced_Mate": 1.0, "Missed": 0.1, "Book": 1.0
     }
 
     accuracy_scores = {}
@@ -182,3 +206,4 @@ def evaluate_game_parallel(pgn_path, white_player, black_player):
     })
 
     return results, move_stats, accuracy_scores
+
