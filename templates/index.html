@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>PGN Dosyası Yükle</h1>
+        <h2>PGN Dosyası Yükle</h2>
         <form method="post" enctype="multipart/form-data">
             <input type="file" name="pgnfile" required>
             <button type="submit">Analiz Et</button>
@@ -15,12 +15,11 @@
 
     {% if results %}
     <div class="container">
-        <!-- SOL SÜTUN: Analiz Tablosu -->
+        <!-- SOL SÜTUN: Analiz Tablosu -->     
         <div class="main-table">
             <h2>Analiz Sonuçları ({{ filename }})</h2>
             <table border="1" cellpadding="5">
                 <tr>
-                    <th>#</th>
                     <th>Oynanan Hamle</th>
                     <th>En İyi Hamle</th>
                     <th>Değerlendirme</th>
@@ -28,7 +27,6 @@
                 </tr>
                 {% for item in results %}
                 <tr>
-                    <td>{{ item.move_number }}</td>
                     <td>{{ item.played }}</td>
                     <td>{{ item.best }}</td>
                     <td>{{ item.eval }}</td>
